@@ -19,13 +19,13 @@ end
 # irb(main):005:0> three(5) { |x| x }
 # => 25
 
-add4 = lambda { |x| x + 4 }
+$add4 = lambda { |x| x + 4 }
 
 def five(n, &block)
   block.call(n)
 end
 
-five(add4)
+five(33, &$add4)
 
 require 'irb'
 IRB.start
