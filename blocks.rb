@@ -1,12 +1,12 @@
-def one
-  result = yield
-end
+#def one
+#  result = yield
+#end
 
-def two
-  yield :one
-  yield :two
-  yield :three
-end
+#def two
+#  yield :one
+#  yield :two
+#  yield :three
+#end
 
 def three(n)
   if block_given?
