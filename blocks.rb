@@ -16,7 +16,7 @@ end
 
 # three(5)
 # => nil
-# irb(main):005:0> three(5) { |x| x }
+# three(5) { |x| x }
 # => 25
 
 $add4 = lambda { |x| x + 4 }
@@ -27,5 +27,30 @@ end
 
 five(33, &$add4)
 
-require 'irb'
-IRB.start
+# =====
+
+bar = Proc.new do |amount, leadtime|
+  result = []
+  rate = amount / leadtime.size
+  leadtime.each { |t| result << { t => rate } }
+  result
+end
+
+def foo(amount, leadtime, &block)
+  block.call(amount, leadtime)
+end
+
+foo(1200, [14, 45, 76], &bar)
+
+# =====
+
+def baz(amount, *leadtimes)
+  leadtimes.collect do |leadtime|
+    Hash[ leadtime, amount / leadtimes.size ]
+  end
+end
+
+p baz(1200, 14, 45, 76)
+
+#require 'irb'
+#IRB.start
