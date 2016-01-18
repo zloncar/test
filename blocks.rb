@@ -17,6 +17,7 @@ end
 # three(5)
 # => nil
 # three(5) { |x| x }
+# irb(main):005:0> three(5) { |x| x }
 # => 25
 
 $add4 = lambda { |x| x + 4 }
